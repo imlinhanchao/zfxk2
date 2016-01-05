@@ -78,13 +78,16 @@ namespace xsxk
                         }
                     }
 
-                    sLogin = GvCrawler.Post("http://113.106.49.220/zfxk2/xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
-                    if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
+                    while (sLogin.IndexOf("window.parent.location='';") < 0)
                     {
-                        Console.WriteLine("#####选课成功#####");
-                        Console.WriteLine(GetMessgae(sLogin));
-                        SaveClassInfo(lstClass);
-                        Console.Read();
+                        sLogin = GvCrawler.Post("http://113.106.49.220/zfxk2/xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
+                        if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
+                        {
+                            Console.WriteLine("#####选课成功#####");
+                            Console.WriteLine(GetMessgae(sLogin));
+                            SaveClassInfo(lstClass);
+                            Console.Read();
+                        }
                     }
                 }
             }
