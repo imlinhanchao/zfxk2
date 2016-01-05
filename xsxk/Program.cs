@@ -85,8 +85,9 @@ namespace xsxk
                                 if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
                                 {
                                     Console.WriteLine("#####选课成功#####");
-                                    Console.WriteLine(GetMessgae(sLogin));
                                     SaveClassInfo(lstClass);
+                                    SaveToFile(sLogin, "result.html");
+                                    Console.WriteLine(GetMessgae(sLogin));
                                     Console.Read();
                                 }
                                 else
@@ -130,6 +131,7 @@ namespace xsxk
             string sRegex = @"alert\('(.*?)'\)";
 
             MatchCollection Matches = Analtytic(sRegex, sHtml);
+            if (Matches.Count <= 0) return "";
 
             string sContent = Matches[0].Groups[1].Value;
 
@@ -181,13 +183,20 @@ namespace xsxk
         /// <param name="lstInfo"></param>
         static void SaveClassInfo(List<CLASS_INFO> lstInfo)
         {
-            using (StreamWriter wr = new StreamWriter("class.csv"))
+            StringBuilder sList = new StringBuilder();
+            sList.AppendLine("名称,时间,老师,课号,请求");
+            for (int i = 0; i < lstInfo.Count; i++)
             {
-                wr.WriteLine("名称,时间,老师,课号,请求");
-                for (int i = 0; i < lstInfo.Count; i++)
-                {
-                    wr.WriteLine(lstInfo[i].sName, lstInfo[i].sTime, lstInfo[i].sTeacher, lstInfo[i].sId, lstInfo[i].sCheck);
-                }
+                sList.AppendLine(lstInfo[i].sName + ",'" + lstInfo[i].sTime + "'," + lstInfo[i].sTeacher + "," + lstInfo[i].sId + "," + lstInfo[i].sCheck);
+            }
+            SaveToFile(sList.ToString(), "class.csv");
+        }
+
+        static void SaveToFile(string sContent, string sFileName)
+        {
+            using (StreamWriter wr = new StreamWriter(sFileName, false, Encoding.Default))
+            {
+                wr.Write(sContent);
             }
         }
     }
