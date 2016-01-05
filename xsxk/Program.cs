@@ -57,40 +57,54 @@ namespace xsxk
                 if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
                 {
                     Console.WriteLine("登录成功");
-                    sLogin = GvCrawler.Get(stjkbcx, _cookies); 
-                }
+                    sLogin = GvCrawler.Get(stjkbcx, _cookies);
 
-                if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
-                {
-                    List<CLASS_INFO> lstClass = GetClassList(sLogin);
-                    Console.WriteLine("获取选课列表");
-
-                    _Post = "__VIEWSTATE=" + GetVIEWSTATE(sLogin) + "&Button1=%D1%A1++%B6%A8";
-
-                    for (int i = 0; i < lstClass.Count; i++)
+                    //while (sLogin.IndexOf("window.parent.location='';") < 0)
                     {
-                        for (int j = 0; j < _classes.Length; j++)
-                        {
-                            if (lstClass[i].sId == _classes[j])
-                            {
-                                _Post += "&" + lstClass[i].sCheck + "=no";
-                            }
-                        }
-                    }
-
-                    while (sLogin.IndexOf("window.parent.location='';") < 0)
-                    {
-                        sLogin = GvCrawler.Post("http://113.106.49.220/zfxk2/xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
                         if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
                         {
-                            Console.WriteLine("#####选课成功#####");
-                            Console.WriteLine(GetMessgae(sLogin));
-                            SaveClassInfo(lstClass);
-                            Console.Read();
+                            List<CLASS_INFO> lstClass = GetClassList(sLogin);
+                            Console.WriteLine("获取选课列表");
+
+                            _Post = "__VIEWSTATE=" + GetVIEWSTATE(sLogin) + "&Button1=%D1%A1++%B6%A8";
+
+                            for (int i = 0; i < lstClass.Count; i++)
+                            {
+                                for (int j = 0; j < _classes.Length; j++)
+                                {
+                                    if (lstClass[i].sId == _classes[j])
+                                    {
+                                        _Post += "&" + lstClass[i].sCheck + "=no";
+                                    }
+                                }
+                            }
+
+                            while (sLogin.IndexOf("window.parent.location='';") < 0)
+                            {
+                                sLogin = GvCrawler.Post("http://113.106.49.220/zfxk2/xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
+                                if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
+                                {
+                                    Console.WriteLine("#####选课成功#####");
+                                    Console.WriteLine(GetMessgae(sLogin));
+                                    SaveClassInfo(lstClass);
+                                    Console.Read();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("提交失败");
+                                    Thread.Sleep(1000);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("获取选课列表失败");
+                            Thread.Sleep(1000);
                         }
                     }
                 }
             }
+            Console.Read();
         }
 
         /// <summary>
