@@ -17,3 +17,4 @@ xsxk.exe 1401260241 123456 1,5,6,7
 ## 注意
 1. 不建议在一台PC上开启多个。
 2. 请勿用于商业用途。
+3. 教务系统改版，已失效。请使用Chrome插件版：https://github.com/szisa/sziit_qianke_crx
