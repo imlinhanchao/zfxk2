@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zfxk2", "xsxk\xsxk.csproj", "{C08E10F4-1B80-4E15-9BC5-549B1BB294D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xsxk", "xsxk\xsxk.csproj", "{C08E10F4-1B80-4E15-9BC5-549B1BB294D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lanucher", "Lanucher\Lanucher.csproj", "{B8AEE9A8-D20B-489C-A398-95622A2EA555}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{C08E10F4-1B80-4E15-9BC5-549B1BB294D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C08E10F4-1B80-4E15-9BC5-549B1BB294D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C08E10F4-1B80-4E15-9BC5-549B1BB294D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8AEE9A8-D20B-489C-A398-95622A2EA555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8AEE9A8-D20B-489C-A398-95622A2EA555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8AEE9A8-D20B-489C-A398-95622A2EA555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8AEE9A8-D20B-489C-A398-95622A2EA555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

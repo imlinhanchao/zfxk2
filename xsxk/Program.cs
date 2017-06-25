@@ -17,6 +17,7 @@ namespace xsxk
         static string _user = "";
         static string _pwd = "";
         static string[] _classes ;
+        static string _rootUrl = "http://10.16.40.56/";
 
         static void Main(string[] args)
         {
@@ -43,8 +44,8 @@ namespace xsxk
             while (sLogin == "" || sLogin.IndexOf("系统繁忙") >= 0)
             {
                 Thread.Sleep(1000);
-                string _Post = "__VIEWSTATE=" + definition.LoginViewState + "&tbYHM=" + _user + "&tbPSW=" + _pwd + "&ddlSF=%D1%A7%C9%FA&imgDL.x=25&imgDL.y=12"; 
-                sLogin = GvCrawler.Post("http://113.106.49.220/zfxk2/default3.aspx", _Post, _cookies);
+                string _Post = "__VIEWSTATE=" + definition.LoginViewState + "&tbYHM=" + _user + "&tbPSW=" + _pwd + "&RadioButtonList1=%D1%A7%C9%FA&imgDL.x=74&imgDL.y=23"; 
+                sLogin = GvCrawler.Post(_rootUrl + "default3.aspx", _Post, _cookies);
                 if (sLogin.IndexOf("密码不正确") > 0)
                 {
                     Console.WriteLine("######## 学号或密码错误！########");
@@ -53,7 +54,7 @@ namespace xsxk
                 }
 
                 Console.WriteLine("尝试登录第" + (n++) + "次");
-                string stjkbcx = "http://113.106.49.220/zfxk2/xsxk.aspx?xh=" + _user + "&lb=1";
+                string stjkbcx = _rootUrl + "xsxk.aspx?xh=" + _user + "&lb=1";
                 if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
                 {
                     Console.WriteLine("登录成功");
@@ -81,7 +82,7 @@ namespace xsxk
 
                             while (sLogin.IndexOf("window.parent.location='';") < 0)
                             {
-                                sLogin = GvCrawler.Post("http://113.106.49.220/zfxk2/xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
+                                sLogin = GvCrawler.Post(_rootUrl + "xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
                                 if ((sLogin != "" && sLogin.IndexOf("系统繁忙") < 0))
                                 {
                                     Console.WriteLine("#####选课成功#####");
@@ -145,7 +146,7 @@ namespace xsxk
         /// <returns></returns>
         static List<CLASS_INFO> GetClassList(string sHtml)
         {
-            string sRegex = @"<tr[^<]*?<td><a [^>]*?>([^<]*?)</a></td><td>[\d-]*?</td><td>([^<]*?)</td>.*?</td><td>(?:<a href=""[^""]*?"">([^<]*?)</a>)+</td><td> <input id=""DataGrid1__ctl\d*_zhj1"" type=""checkbox"" name=""(DataGrid1:_ctl\d*:zhj1)"" /> </td><td>(\d*)</td><td>";
+            string sRegex = @"<tr[^<]*?<td><a [^>]*?>([^<]*?)</a></td><td>[\d-]*?</td><td>([^<]*?)</td>.*?</td><td>(?:<a href=""[^""]*?"">([^<]*?)</a>)+</td><td> <input name=""(DataGrid1:_ctl\d*:zhj1)"" id=""DataGrid1__ctl\d*_zhj1"" type=""checkbox"" .*?</td><td>(\d*)</td><td>";
 
             MatchCollection Matches = Analtytic(sRegex, sHtml);
             List<CLASS_INFO> checks = new List<CLASS_INFO>();

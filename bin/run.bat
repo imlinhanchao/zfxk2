@@ -1,1 +1,1 @@
-xsxk.exe 1401250105 123456 5,6,7
+Lanucher.exe list.txt
