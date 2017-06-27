@@ -15,6 +15,6 @@ namespace xsxk
 
     class definition
     {
-        public static string LoginViewState = "dDwxOTA0NTQ3NDgwO3Q8O2w8aTwxPjs%2BO2w8dDw7bDxpPDg%2BO2k8MTM%2BO2k8MTU%2BOz47bDx0PHA8O3A8bDxvbmNsaWNrOz47bDx3aW5kb3cuY2xvc2UoKVw7Oz4%2BPjs7Pjt0PHA8bDxWaXNpYmxlOz47bDxvPGY%2BOz4%2BOzs%2BO3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47Pj47bDxpbWdETDtpbWdUQztpbWdRTU07Pj7x6PjbnkVn3z9hXf5cLw0NJt%2FfaQ%3D%3D";
+        public static string LoginViewState = "dDw1NjkwNTA3NjQ7dDw7bDxpPDE%2bOz47bDx0PDtsPGk8Mz47aTwxND47aTwxNz47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47dDxwPDtwPGw8b25jbGljazs%2bO2w8d2luZG93LmNsb3NlKClcOzs%2bPj47Oz47dDxwPGw8VmlzaWJsZTs%2bO2w8bzxmPjs%2bPjs7Pjs%2bPjs%2bPjtsPGltZ0RMOz4%2bBcyT58fn%2bHMYYgmQod8KR7TRuz8%3d";
     }
 }

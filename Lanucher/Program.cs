@@ -18,7 +18,7 @@ namespace Lanucher
             }
             else
             {
-                sfile = args[1];
+                sfile = args[0];
             }
             using(StreamReader sr = new StreamReader(sfile))
             {

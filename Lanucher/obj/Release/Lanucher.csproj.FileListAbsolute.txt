@@ -1,5 +1,0 @@
-Y:\Documents\Project\NET\zfxk2\Lanucher\bin\Release\Lanucher.exe
-Y:\Documents\Project\NET\zfxk2\Lanucher\bin\Release\Lanucher.pdb
-Y:\Documents\Project\NET\zfxk2\Lanucher\obj\Release\ResolveAssemblyReference.cache
-Y:\Documents\Project\NET\zfxk2\Lanucher\obj\Release\Lanucher.exe
-Y:\Documents\Project\NET\zfxk2\Lanucher\obj\Release\Lanucher.pdb
