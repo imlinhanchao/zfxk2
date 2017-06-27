@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Text;
 using GvWebCrawler;
@@ -17,19 +17,19 @@ namespace xsxk
         static string _user = "";
         static string _pwd = "";
         static string[] _classes ;
-        static string _rootUrl = "http://10.16.40.56/";
+        static string _rootUrl = "http://zfxk2.net.sxisa.com/";
 
         static void Main(string[] args)
         {
             if (args.Length < 3)
             {
-                Console.WriteLine("ÃüÁîĞĞµ÷ÓÃ·½·¨£¬²ÎÊıÒÀ´ÎÎª Ñ§ºÅ ÃÜÂë ¿ÎºÅÁĞ±í£¨¶ººÅ¸ô¿ª£©");
-                Console.WriteLine("ÀıÈç: xsxk.exe 1401260241 123456 1,5,6,7");
-                Console.WriteLine("ÇëÊäÈëÑ§ºÅ£º");
+                Console.WriteLine("å‘½ä»¤è¡Œè°ƒç”¨æ–¹æ³•ï¼Œå‚æ•°ä¾æ¬¡ä¸º å­¦å· å¯†ç  è¯¾å·åˆ—è¡¨ï¼ˆé€—å·éš”å¼€ï¼‰");
+                Console.WriteLine("ä¾‹å¦‚: xsxk.exe 1401260241 123456 1,5,6,7");
+                Console.WriteLine("è¯·è¾“å…¥å­¦å·ï¼š");
                 _user = Console.ReadLine();
-                Console.WriteLine("ÇëÊäÈë½ÌÎñ¹ÜÀíÏµÍ³ÃÜÂë£º");
+                Console.WriteLine("è¯·è¾“å…¥æ•™åŠ¡ç®¡ç†ç³»ç»Ÿå¯†ç ï¼š");
                 _pwd = Console.ReadLine();
-                Console.WriteLine("ÇëÊäÈëÑ¡¿Î¿ÎºÅ£¬¶à¸öÑ¡¿ÎÇë°´Ë³ĞòÓÃ¶ººÅ¸ô¿ª£¬Èç£º1,5,6,7");
+                Console.WriteLine("è¯·è¾“å…¥é€‰è¯¾è¯¾å·ï¼Œå¤šä¸ªé€‰è¯¾è¯·æŒ‰é¡ºåºç”¨é€—å·éš”å¼€ï¼Œå¦‚ï¼š1,5,6,7");
                 _classes = Console.ReadLine().Split(',');
             }
             else
@@ -38,36 +38,36 @@ namespace xsxk
                 _pwd = args[1];
                 _classes = args[2].Split(',');
             }
-            Console.WriteLine("###### ÇÀ¿Î¿ªÊ¼£¡######");
+            Console.WriteLine("###### æŠ¢è¯¾å¼€å§‹ï¼######");
             string sLogin = "";
             int n = 1;
-            while (sLogin == "" || sLogin.IndexOf("ÏµÍ³·±Ã¦") >= 0)
+            while (sLogin == "" || sLogin.IndexOf("ç³»ç»Ÿç¹å¿™") >= 0)
             {
                 Thread.Sleep(1000);
                 string _Post = "__VIEWSTATE=" + definition.LoginViewState + "&tbYHM=" + _user + "&tbPSW=" + _pwd + "&RadioButtonList1=%D1%A7%C9%FA&imgDL.x=74&imgDL.y=23"; 
                 sLogin = GvCrawler.Post(_rootUrl + "default3.aspx", _Post, _cookies);
-                if (sLogin.IndexOf("ÃÜÂë²»ÕıÈ·") > 0)
+                if (sLogin.IndexOf("å¯†ç ä¸æ­£ç¡®") > 0)
                 {
-                    Console.WriteLine("######## Ñ§ºÅ»òÃÜÂë´íÎó£¡########");
+                    Console.WriteLine("######## å­¦å·æˆ–å¯†ç é”™è¯¯ï¼########");
                     Console.Read();
                     return;
                 }
 
-                Console.WriteLine("³¢ÊÔµÇÂ¼µÚ" + (n++) + "´Î");
+                Console.WriteLine("å°è¯•ç™»å½•ç¬¬" + (n++) + "æ¬¡");
                 string stjkbcx = _rootUrl + "xsxk.aspx?xh=" + _user + "&lb=1";
-                if ((sLogin != "" && sLogin.IndexOf("ÏµÍ³·±Ã¦") < 0))
+                if ((sLogin != "" && sLogin.IndexOf("ç³»ç»Ÿç¹å¿™") < 0))
                 {
-                    Console.WriteLine("µÇÂ¼³É¹¦");
+                    Console.WriteLine("ç™»å½•æˆåŠŸ");
                     sLogin = GvCrawler.Get(stjkbcx, _cookies);
 
                     //while (sLogin.IndexOf("window.parent.location='';") < 0)
                     {
-                        if ((sLogin != "" && sLogin.IndexOf("ÏµÍ³·±Ã¦") < 0))
+                        if ((sLogin != "" && sLogin.IndexOf("ç³»ç»Ÿç¹å¿™") < 0))
                         {
                             List<CLASS_INFO> lstClass = GetClassList(sLogin);
-                            Console.WriteLine("»ñÈ¡Ñ¡¿ÎÁĞ±í");
+                            Console.WriteLine("è·å–é€‰è¯¾åˆ—è¡¨");
 
-                            _Post = "__VIEWSTATE=" + GetVIEWSTATE(sLogin) + "&Button1=%D1%A1++%B6%A8";
+                            _Post = "__VIEWSTATE=" + GetVIEWSTATE(sLogin) + "&__EVENTTARGET=btnXK&__EVENTARGUMENT=&HidXxmc=%C9%EE%DB%DA%D0%C5%CF%A2%D6%B0%D2%B5%BC%BC%CA%F5%D1%A7%D4%BA&HidLc=2&HidJkb=&HidJc=&HidXn=2017-2018&HidXq=1";
 
                             for (int i = 0; i < lstClass.Count; i++)
                             {
@@ -83,9 +83,9 @@ namespace xsxk
                             while (sLogin.IndexOf("window.parent.location='';") < 0)
                             {
                                 sLogin = GvCrawler.Post(_rootUrl + "xsxk.aspx?xh=" + _user + "&lb=1", _Post, _cookies);
-                                if ((sLogin != "" && sLogin.IndexOf("ÏµÍ³·±Ã¦") < 0))
+                                if ((sLogin != "" && sLogin.IndexOf("ç³»ç»Ÿç¹å¿™") < 0))
                                 {
-                                    Console.WriteLine("#####Ñ¡¿Î³É¹¦#####");
+                                    Console.WriteLine("#####é€‰è¯¾æˆåŠŸ#####");
                                     SaveClassInfo(lstClass);
                                     SaveToFile(sLogin, "result.html");
                                     Console.WriteLine(GetMessgae(sLogin));
@@ -93,14 +93,14 @@ namespace xsxk
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Ìá½»Ê§°Ü");
+                                    Console.WriteLine("æäº¤å¤±è´¥");
                                     Thread.Sleep(1000);
                                 }
                             }
                         }
                         else
                         {
-                            Console.WriteLine("»ñÈ¡Ñ¡¿ÎÁĞ±íÊ§°Ü");
+                            Console.WriteLine("è·å–é€‰è¯¾åˆ—è¡¨å¤±è´¥");
                             Thread.Sleep(1000);
                         }
                     }
@@ -110,7 +110,7 @@ namespace xsxk
         }
 
         /// <summary>
-        /// »ñÈ¡ViewState
+        /// è·å–ViewState
         /// </summary>
         /// <param name="sHtml"></param>
         /// <returns></returns>
@@ -123,7 +123,7 @@ namespace xsxk
         }
 
         /// <summary>
-        /// »ñÈ¡ÌáÊ¾
+        /// è·å–æç¤º
         /// </summary>
         /// <param name="sHtml"></param>
         /// <returns></returns>
@@ -140,7 +140,7 @@ namespace xsxk
         }
 
         /// <summary>
-        /// »ñÈ¡¿Î³ÌÁĞ±í
+        /// è·å–è¯¾ç¨‹åˆ—è¡¨
         /// </summary>
         /// <param name="sHtml"></param>
         /// <returns></returns>
@@ -166,7 +166,7 @@ namespace xsxk
         }
         
         /// <summary>
-        /// ¸ù¾İÕıÔò½âÎöÎÄ±¾
+        /// æ ¹æ®æ­£åˆ™è§£ææ–‡æœ¬
         /// </summary>
         /// <param name="sRegEx"></param>
         /// <param name="sHtml"></param>
@@ -179,13 +179,13 @@ namespace xsxk
         }
 
         /// <summary>
-        /// ±£´æ¿Î³ÌÁĞ±í
+        /// ä¿å­˜è¯¾ç¨‹åˆ—è¡¨
         /// </summary>
         /// <param name="lstInfo"></param>
         static void SaveClassInfo(List<CLASS_INFO> lstInfo)
         {
             StringBuilder sList = new StringBuilder();
-            sList.AppendLine("Ãû³Æ,Ê±¼ä,ÀÏÊ¦,¿ÎºÅ,ÇëÇó");
+            sList.AppendLine("åç§°,æ—¶é—´,è€å¸ˆ,è¯¾å·,è¯·æ±‚");
             for (int i = 0; i < lstInfo.Count; i++)
             {
                 sList.AppendLine(lstInfo[i].sName + ",'" + lstInfo[i].sTime + "'," + lstInfo[i].sTeacher + "," + lstInfo[i].sId + "," + lstInfo[i].sCheck);
